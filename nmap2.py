@@ -20,7 +20,7 @@ while True:
         break
     elif int(user_input) in commands:
         command = commands[int(user_input)][0]
-        ip_address = input("Please enter the IP address: ") or "8.8.8.8" #default IP
+        ip_address = input("Please enter the IP address: ") or "IP ADDRESS" #default IP
         print(f"\nCommand: {command} {ip_address}\n")
         os.system(f"{command} {ip_address}")
     else:
