@@ -1,15 +1,15 @@
 import os
 
 commands = {
-    1: ["-A 192.168.1.1", "Performs an aggressive scan on IP address '192.168.1.1'"],
-    2: ["-O 192.168.1.1", "Tries to determine the operating system of host '192.168.1.1'"],
-    3: ["-sS 192.168.1.1", "Performs a stealth SYN scan of host '192.168.1.1'"],
-    4: ["-T1 192.168.1.1", "Performs a fast scan on IP address '192.168.1.1'"],
-    5: ["-T4 192.168.1.1", "Performs an intense scan on IP address '192.168.1.1'"],
-    6: ["-sP 192.168.1.1", "Performs a ping scan on IP address '192.168.1.1'"],
-    7: ["-Pn 192.168.1.1", "Performs a scan without sending a ping request to IP address '192.168.1.1'"],
-    8: ["-sA 192.168.1.1", "Performs an ACK scan on IP address '192.168.1.1'"],
-    9: ["-SL 192.168.1.1", "Performs a scan for SSL/TLS service on IP address '192.168.1.1'"]
+    1: ["nmap -A", "Performs an aggressive scan"],
+    2: ["nmap -O", "Tries to determine the operating system of host"],
+    3: ["nmap -sS", "Performs a stealth SYN scan"],
+    4: ["nmap -T1", "Performs a fast scan"],
+    5: ["nmap -T4", "Performs an intense scan"],
+    6: ["nmap -sP", "Performs a ping scan"],
+    7: ["nmap -Pn", "Performs a scan without sending a ping request"],
+    8: ["nmap -sA", "Performs an ACK scan"],
+    9: ["nmap -SL", "Performs a scan for SSL/TLS service"]
 }
 
 while True:
@@ -20,7 +20,9 @@ while True:
         break
     elif int(user_input) in commands:
         command = commands[int(user_input)][0]
-        print(f"\nCommand: {command}\n")
+        ip_address = input("Please enter the IP address: ") or "8.8.8.8" #default IP
+        print(f"\nCommand: {command} {ip_address}\n")
+        os.system(f"{command} {ip_address}")
     else:
         print("Invalid input, please enter a number from the list above.")
     print("")
